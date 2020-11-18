@@ -1,0 +1,10 @@
+"pt-BR":
+  hello: "Olá mundo"
+  buttons:
+    show: "Mostrar"
+    edit: "Editar"
+    destroy: "Deletar"
+    new: "Novo"
+  message:
+    confirm: "Tem certeza?"
+    listing: "Lista de"
