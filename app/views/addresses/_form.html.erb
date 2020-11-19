@@ -1,8 +1,6 @@
 <%= form_with(model: address, local: true) do |form| %>
   <% if address.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
-
       <ul>
       <% address.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,6 +8,11 @@
       </ul>
     </div>
   <% end %>
+
+  <p>
+    <strong><%= " #{t('activerecord.attributes.address.contact_id')}:" %></strong>
+    <%= @address.contact.name %>
+  </p>
 
   <div class="field">
     <%= form.label :street %>
@@ -23,15 +26,11 @@
 
   <div class="field">
     <%= form.label :state %>
-    <%= form.text_field :state %>
-  </div>
-
-  <div class="field">
-    <%= form.label :contact_id %>
-    <%= form.text_field :contact_id %>
+    <%= form.select :state, options_of_states(@address.state) %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
+    <%= link_to t('buttons.back'), addresses_path %>
   </div>
 <% end %>

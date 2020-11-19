@@ -8,8 +8,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <ul>
+      <li><%= link_to t('activerecord.models.contact.other'), contacts_path %></li>
+      <li><%= link_to t('activerecord.models.kind.other'), kinds_path %></li>
+      <li><%= link_to t('activerecord.models.phone.other'), phones_path %></li>
+      <li><%= link_to t('activerecord.models.address.other'), addresses_path %></li>
+    </ul>
     <%= yield %>
   </body>
 </html>

@@ -11,17 +11,18 @@
     </div>
   <% end %>
 
+  <p>
+    <strong><%= t('activerecord.attributes.phone.contact_id') %></strong>
+    <%= @phone.contact.name %>
+  </p>
+
   <div class="field">
     <%= form.label :phone %>
     <%= form.text_field :phone %>
   </div>
 
-  <div class="field">
-    <%= form.label :contact %>
-    <%= form.text_field :contact %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
+    <%= link_to t('buttons.back'), phones_path %>
   </div>
 <% end %>

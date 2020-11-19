@@ -103,6 +103,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
+    lerolero_generator (1.0.1)
     loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -217,6 +218,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
+  lerolero_generator
   puma (~> 3.11)
   rails (~> 5.2.4, >= 5.2.4.4)
   rails-i18n (~> 5.1)

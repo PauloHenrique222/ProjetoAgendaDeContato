@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Street:</strong>
+  <strong><%= " #{t('activerecord.attributes.address.contact_id')}:" %></strong>
+  <%= @address.contact.name %>
+</p>
+
+<p>
+  <strong><%= " #{t('activerecord.attributes.address.street')}:" %></strong>
   <%= @address.street %>
 </p>
 
 <p>
-  <strong>City:</strong>
+  <strong><%= " #{t('activerecord.attributes.address.city')}:" %></strong>
   <%= @address.city %>
 </p>
 
 <p>
-  <strong>State:</strong>
+  <strong><%= " #{t('activerecord.attributes.address.state')}:" %></strong>
   <%= @address.state %>
 </p>
 
-<p>
-  <strong>Contact:</strong>
-  <%= @address.contact %>
-</p>
-
-<%= link_to 'Edit', edit_address_path(@address) %> |
-<%= link_to 'Back', addresses_path %>
+<%= link_to t('buttons.edit'), edit_address_path(@address) %> |
+<%= link_to t('buttons.back'), addresses_path %>

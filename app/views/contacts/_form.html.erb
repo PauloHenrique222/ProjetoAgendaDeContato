@@ -9,7 +9,7 @@
     </div>
   <% end %>
 
-  <h1>Contact</h1>
+  <h1><%= t('activerecord.models.contact.one') %></h1>
 
   <div class="field">
     <%= form.label :name %>
@@ -59,7 +59,7 @@
 
   <div class="actions">
     <%= form.submit class: "button" %>
-    <%= link_to 'Back', contacts_path, class: "button-back" %>
+    <%= link_to t('buttons.back'), contacts_path, class: "button-back" %>
   </div>
 <% end %>
 

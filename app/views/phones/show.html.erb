@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Phone:</strong>
-  <%= @phone.phone %>
+  <strong><%= t('activerecord.attributes.phone.contact_id') %></strong>
+  <%= @phone.contact.name %>
 </p>
 
 <p>
-  <strong>Contact:</strong>
-  <%= @phone.contact %>
+  <strong><%= t('activerecord.attributes.phone.phone') %></strong>
+  <%= @phone.phone %>
 </p>
 
-<%= link_to 'Edit', edit_phone_path(@phone) %> |
-<%= link_to 'Back', phones_path %>
+<%= link_to t('buttons.edit'), edit_phone_path(@phone) %> |
+<%= link_to t('buttons.back'), phones_path %>

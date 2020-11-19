@@ -12,11 +12,6 @@ class PhonesController < ApplicationController
   def show
   end
 
-  # GET /phones/new
-  def new
-    @phone = Phone.new
-  end
-
   # GET /phones/1/edit
   def edit
   end

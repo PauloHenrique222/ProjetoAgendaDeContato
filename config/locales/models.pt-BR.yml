@@ -10,6 +10,9 @@
       phone:
         one: "Telefone"
         other: "Telefones"
+      kind:
+        one: "Tipo"
+        other: "Tipos"
     attributes:
       contact:
         name: "Nome"
@@ -20,5 +23,9 @@
         state: "Estado"
         city: "Cidade"
         street: "Rua"
+        contact_id: "Contato"
       phone:
         phone: "Telefone"
+        contact_id: "Contato"
+      kind:
+        description: "Descrição"

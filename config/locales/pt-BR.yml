@@ -5,6 +5,7 @@
     edit: "Editar"
     destroy: "Deletar"
     new: "Novo"
+    back: "Voltar"
   message:
     confirm: "Tem certeza?"
-    listing: "Lista de"
+    listing: "Listando"
