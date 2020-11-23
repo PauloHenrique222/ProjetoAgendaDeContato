@@ -11,13 +11,13 @@
 
   <h1><%= t('activerecord.models.kind.one') %></h1>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_field :description, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
-    <%= link_to t('buttons.back'), kinds_path %>
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to t('buttons.back'), kinds_path, class: "btn btn-white" %>
   </div>
 <% end %>

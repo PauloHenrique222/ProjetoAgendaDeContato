@@ -1,7 +1,8 @@
 "pt-BR":
   hello: "Olá mundo"
+  home: "Página Inicial"
   buttons:
-    show: "Mostrar"
+    show: "Exibir"
     edit: "Editar"
     destroy: "Deletar"
     new: "Novo"
@@ -9,3 +10,7 @@
   message:
     confirm: "Tem certeza?"
     listing: "Listando"
+    success: "Salvo com sucesso"
+    destroy: "Deletado com sucesso"
+    update: "Atualizado com sucesso"
+    destroy_error: "Não foi possível deleter...Existe Contato vinculando com esse Tipo"

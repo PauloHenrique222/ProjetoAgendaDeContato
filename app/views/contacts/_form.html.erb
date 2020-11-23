@@ -1,4 +1,4 @@
-<%= form_with(model: contact, html:{class: "basic-grey"}, local: true) do |form| %>
+<%= form_with(model: contact, local: true) do |form| %>
   <% if contact.errors.any? %>
     <div id="error_explanation">
       <ul>
@@ -9,25 +9,20 @@
     </div>
   <% end %>
 
-  <h1><%= t('activerecord.models.contact.one') %></h1>
+  <h1 class="text-center"><%= t('activerecord.models.contact.one') %></h1>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control"%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, class: "form-control"%>
   </div>
 
-  <div class="field">
-    <%= form.label :kind_id %>
-    <%= form.collection_select :kind_id, @kinds, :id, :description %>
-  </div>
-
-  <div id="phones">
-    <%= form.fields_for :phones do |phones_fields|%>
+  <div id="phones" class="form-group">
+    <%= form.fields_for :phones do |phones_fields| %>
       <%= render partial: "phone_fields", locals: {f: phones_fields} %>
     <% end %>
     <%= link_to_add_association('Adicionar telefone', form, :phones) %>
@@ -35,31 +30,34 @@
 
   <%= form.fields_for :address do |address_fields|%>
 
-    <div class="field">
+    <div class="form-group">
       <%= address_fields.label :street %>
-      <%= address_fields.text_field :street %>
+      <%= address_fields.text_field :street, class: "form-control"%>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <%= address_fields.label :city %>
-      <%= address_fields.text_field :city %>
+      <%= address_fields.text_field :city, class: "form-control" %>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <%= address_fields.label :state %>
-      <%= address_fields.select :state, options_of_states(@contact.address.state) %>
+      <%= address_fields.select :state, options_of_states(@contact.address.state), {}, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :kind_id %>
+      <%= form.collection_select :kind_id, @kinds, :id, :description, {}, class: "form-control"%>
     </div>
 
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :rmk %>
-    <%= form.text_area :rmk %>
+    <%= form.text_area :rmk, rows: 10, class: "form-control"%>
   </div>
 
-  <div class="actions">
-    <%= form.submit class: "button" %>
-    <%= link_to t('buttons.back'), contacts_path, class: "button-back" %>
-  </div>
+  <%= form.submit class: "btn btn-primary"%>
+  <%= link_to t('buttons.back'), contacts_path, class: "btn btn-white" %>
 <% end %>
 

@@ -1,5 +1,6 @@
 module ApplicationHelper
     ESTADOS_BRASILEIROS = [
+        [" ", " "],
         ["Acre", "AC"],
         ["Alagoas", "AL"],
         ["Amapá", "AP"],

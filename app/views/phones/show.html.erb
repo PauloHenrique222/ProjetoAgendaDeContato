@@ -1,14 +1,25 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:notice] %>
+  <div class="card-alert alert-info">
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
 
-<p>
-  <strong><%= t('activerecord.attributes.phone.contact_id') %></strong>
-  <%= @phone.contact.name %>
-</p>
+<div class="card">
+  <%= form_for @phone do |form| %>
 
-<p>
-  <strong><%= t('activerecord.attributes.phone.phone') %></strong>
-  <%= @phone.phone %>
-</p>
+    <p>
+      <strong><%= "#{t('activerecord.attributes.phone.contact_id')}:" %></strong>
+      <%= @phone.contact.name %>
+    </p>
 
-<%= link_to t('buttons.edit'), edit_phone_path(@phone) %> |
-<%= link_to t('buttons.back'), phones_path %>
+    <div class="form-group">
+      <%= form.label :phone %>
+      <%= form.text_field :phone, class: "form-control", disabled: true %>
+    </div>
+
+    <%= link_to t('buttons.edit'), edit_phone_path, class: "btn btn-primary" %>
+    <%= link_to t('buttons.back'), phones_path, class: "btn btn-white" %>
+
+  <% end %>
+
+</div>

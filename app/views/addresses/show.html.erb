@@ -1,24 +1,36 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:notice] %>
+  <div class="card-alert alert-info">
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
 
-<p>
-  <strong><%= " #{t('activerecord.attributes.address.contact_id')}:" %></strong>
-  <%= @address.contact.name %>
-</p>
+<div class="card">
+  <%= form_for @address do |form| %>
 
-<p>
-  <strong><%= " #{t('activerecord.attributes.address.street')}:" %></strong>
-  <%= @address.street %>
-</p>
+    <p>
+      <strong><%= " #{t('activerecord.attributes.address.contact_id')}:" %></strong>
+      <%= @address.contact.name %>
+    </p>
 
-<p>
-  <strong><%= " #{t('activerecord.attributes.address.city')}:" %></strong>
-  <%= @address.city %>
-</p>
+    <div class="form-group">
+      <%= form.label :street %>
+      <%= form.text_field :street, class: "form-control", disabled: true %>
+    </div>
 
-<p>
-  <strong><%= " #{t('activerecord.attributes.address.state')}:" %></strong>
-  <%= @address.state %>
-</p>
+    <div class="form-group">
+      <%= form.label :city %>
+      <%= form.text_field :city, class: "form-control", disabled: true %>
+    </div>
 
-<%= link_to t('buttons.edit'), edit_address_path(@address) %> |
-<%= link_to t('buttons.back'), addresses_path %>
+    <div class="form-group">
+      <%= form.label :state %>
+      <%= form.select_tag :state, options_of_states(@address.state), class: "form-control", disabled: true %>
+    </div>
+
+    <%= link_to t('buttons.edit'), edit_address_path(@address), class: "btn btn-primary" %>
+    <%= link_to t('buttons.back'), addresses_path, class: "btn btn-white" %>
+
+  <% end %>
+</div>
+
+

@@ -1,9 +1,22 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:notice] %>
+  <div class="card-alert alert-info">
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
 
-<p>
-  <strong><%= t('activerecord.attributes.kind.description') %></strong>
-  <%= @kind.description %>
-</p>
+<div class="card">
+  <%= form_for @kind do |form| %>
 
-<%= link_to t('buttons.edit'), edit_kind_path(@kind) %> |
-<%= link_to t('buttons.back'), kinds_path %>
+    <h1><%= t('activerecord.models.kind.one') %></h1>
+
+    <div class="form-group">
+      <%= form.label :description %>
+      <%= form.text_field :description, class: "form-control", disabled: true %>
+    </div>
+
+    <%= link_to t('buttons.edit'), edit_kind_path, class: "btn btn-primary" %>
+    <%= link_to t('buttons.back'), kinds_path, class: "btn btn-white" %>
+
+  <% end %>
+
+</div>

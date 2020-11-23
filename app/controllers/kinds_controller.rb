@@ -4,7 +4,7 @@ class KindsController < ApplicationController
   # GET /kinds
   # GET /kinds.json
   def index
-    @kinds = Kind.all
+    @kinds = Kind.order(:description).page(params[:page]).per(6)
   end
 
   # GET /kinds/1
@@ -28,8 +28,8 @@ class KindsController < ApplicationController
 
     respond_to do |format|
       if @kind.save
-        format.html { redirect_to @kind, notice: 'Kind was successfully created.' }
-        format.json { render :show, status: :created, location: @kind }
+        format.html { redirect_to kinds_url, notice: t('message.success') }
+        format.json { render :index, status: :created, location: @kind }
       else
         format.html { render :new }
         format.json { render json: @kind.errors, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class KindsController < ApplicationController
   def update
     respond_to do |format|
       if @kind.update(kind_params)
-        format.html { redirect_to @kind, notice: 'Kind was successfully updated.' }
+        format.html { redirect_to @kind, notice: t('message.update') }
         format.json { render :show, status: :ok, location: @kind }
       else
         format.html { render :edit }
@@ -54,10 +54,15 @@ class KindsController < ApplicationController
   # DELETE /kinds/1
   # DELETE /kinds/1.json
   def destroy
-    @kind.destroy
     respond_to do |format|
-      format.html { redirect_to kinds_url, notice: 'Kind was successfully destroyed.' }
-      format.json { head :no_content }
+      if @kind.contacts.size == 0
+         @kind.destroy
+        format.html { redirect_to kinds_url, notice: t('message.destroy') }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to kinds_url, notice: t('message.destroy_error') }
+        format.json { head :no_content }
+      end
     end
   end
 

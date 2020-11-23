@@ -9,7 +9,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <ul>
+    <ul class="nav nav-pills">
+      <li><%= link_to t('home'), root_path %></li>
       <li><%= link_to t('activerecord.models.contact.other'), contacts_path %></li>
       <li><%= link_to t('activerecord.models.kind.other'), kinds_path %></li>
       <li><%= link_to t('activerecord.models.phone.other'), phones_path %></li>

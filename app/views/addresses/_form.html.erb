@@ -14,23 +14,23 @@
     <%= @address.contact.name %>
   </p>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :street %>
-    <%= form.text_field :street %>
+    <%= form.text_field :street, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :city %>
-    <%= form.text_field :city %>
+    <%= form.text_field :city, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :state %>
-    <%= form.select :state, options_of_states(@address.state) %>
+    <%= form.select_tag :state, options_of_states(@address.state), class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
-    <%= link_to t('buttons.back'), addresses_path %>
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to t('buttons.back'), addresses_path, class: "btn btn-white"%>
   </div>
 <% end %>

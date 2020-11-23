@@ -1,24 +1,66 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:notice] %>
+  <div class="card-alert alert-info">
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
 
-<p>
-  <strong><%= " #{t('activerecord.attributes.contact.name')}:" %></strong>
-  <%= @contact.name %>
-</p>
+<div class="card">
 
-<p>
-  <strong><%= " #{t('activerecord.attributes.contact.email')}:" %></strong>
-  <%= @contact.email %>
-</p>
+  <%= form_for @contact do |form| %>
 
-<p>
-  <strong><%= " #{t('activerecord.attributes.contact.rmk')}:" %></strong>
-  <%= @contact.rmk %>
-</p>
+    <h1 class="text-center"><%= t('activerecord.models.contact.one') %></h1>
 
-<p>
-  <strong><%= " #{t('activerecord.attributes.contact.kind_id')}:" %></strong>
-  <%= @contact.kind.description %>
-</p>
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control", disabled: true %>
+    </div>
 
-<%= link_to t('buttons.edit'), edit_contact_path(@contact) %> |
-<%= link_to t('buttons.back'), contacts_path %>
+    <div class="form-group">
+      <%= form.label :email %>
+      <%= form.text_field :email, class: "form-control", disabled: true %>
+    </div>
+
+
+    <%= form.fields_for :phones do |phones_fields| %>
+      <div class="nested-fields">
+        <div class="form-group">
+          <%= phones_fields.label :phone %>
+          <%= phones_fields.text_field :phone, class:"form-control", disabled: true %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= form.fields_for :address do |address_fields|%>
+
+      <div class="form-group">
+        <%= address_fields.label :street %>
+        <%= address_fields.text_field :street, class: "form-control", disabled: true %>
+      </div>
+
+      <div class="form-group">
+        <%= address_fields.label :city %>
+        <%= address_fields.text_field :city, class: "form-control", disabled: true %>
+      </div>
+
+      <div class="form-group">
+        <%= address_fields.label :state %>
+        <%= address_fields.select_tag :state, options_of_states(@contact.address.state), class: "form-control", disabled: true %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :kind_id %>
+        <%= form.collection_select :kind_id, @kinds, :id, :description, {}, class: "form-control", disabled: true %>
+      </div>
+
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :rmk %>
+      <%= form.text_area :rmk, rows: 10, class: "form-control", disabled: true %>
+    </div>
+
+    <%= link_to t('buttons.edit'), edit_contact_path, class: "btn btn-primary" %>
+    <%= link_to t('buttons.back'), contacts_path, class: "btn btn-white"%>
+
+  <% end %>
+</div>

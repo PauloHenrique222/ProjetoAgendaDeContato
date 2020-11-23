@@ -1,27 +1,37 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:notice] %>
+  <div class="card-alert alert-info">
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
 
-<h1><%= "#{t('message.listing')} #{t('activerecord.models.phone.other')}" %></h1>
+<div class="container">
 
-<table>
-  <thead>
-    <tr>
-      <th><%= t('activerecord.attributes.phone.phone') %></th>
-      <th><%= t('activerecord.attributes.phone.contact_id') %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <h1 class="text-center"><%= "#{t('message.listing')} #{t('activerecord.models.phone.other')}" %></h1>
 
-  <tbody>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th><%= t('activerecord.attributes.phone.phone') %></th>
+        <th><%= t('activerecord.attributes.phone.contact_id') %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
     <% @phones.each do |phone| %>
       <tr>
         <td><%= phone.phone %></td>
         <td><%= phone.contact.name %></td>
-        <td><%= link_to t('buttons.show'), phone %></td>
-        <td><%= link_to t('buttons.edit'), edit_phone_path(phone) %></td>
-        <td><%= link_to t('buttons.destroy'), phone, method: :delete, data: { confirm: t('message.confirm') } %></td>
+        <td><%= link_to t('buttons.show'), phone, class: "btn btn-success" %></td>
+        <td><%= link_to t('buttons.edit'), edit_phone_path(phone), class: "btn btn-warning" %></td>
+        <td><%= link_to t('buttons.destroy'), phone, method: :delete, data: { confirm: t('message.confirm') }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<br>
+  <div class="text-center">
+    <%= paginate @phones%>
+  </div>
+
+</div>
